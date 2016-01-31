@@ -110,7 +110,7 @@ function timeElapse(date){
 	if (seconds < 10) {
 		seconds = "0" + seconds;
 	}
-	var result = "<span class=\"digit\">" + days + "</span> days <span class=\"digit\">" + hours + "</span> hours <span class=\"digit\">" + minutes + "</span> minutes <span class=\"digit\">" + seconds + "</span> seconds"; 
+	var result = "<span class=\"digit\">" + days + "</span> ÃÏ <span class=\"digit\">" + hours + "</span>  ± <span class=\"digit\">" + minutes + "</span> ∑÷ <span class=\"digit\">" + seconds + "</span> √Î"; 
 	$("#elapseClock").html(result);
 }
 
@@ -128,7 +128,16 @@ function adjustWordsPosition() {
 }
 
 function adjustCodePosition() {
-	$('#code').css("margin-top", ($("#garden").height() - $("#code").height()) / 2);
+	$('#code').css("margin-top", ($("#garden").height() - $("#code").height()-$("#slide").height()) / 3);
+}
+
+
+function adjustLoveHeartPosition() {
+	$('#loveHeart').css("margin-top", ($("#leftSide").height()-$("#garden").height()) / 2);
+}
+
+function adjustLeftSidePosition() {
+	$('#leftSide').css("margin-top", ($("#garden").height() - $("#leftSide").height()) / 2);
 }
 
 function showLoveU() {

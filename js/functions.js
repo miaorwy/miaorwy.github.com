@@ -86,6 +86,9 @@ function startHeartAnimation() {
 				        setTimeout(function () {
 		                    stopType();
 	                    }, 1000);
+	                    setTimeout(function () {
+		                    showSlide();
+	                    }, 3000);
 				    }
 					progress++;
 				}
@@ -94,7 +97,6 @@ function startHeartAnimation() {
 				    startHeartAnimation();
 				}
 				if (progress >= str.length) {
-				    showSlide();
 					clearInterval(timer);
 				}
 			}, 75);

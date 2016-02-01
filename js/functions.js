@@ -127,19 +127,24 @@ function adjustWordsPosition() {
 	$('#words').css("left", $("#garden").position().left + 70);
 }
 
-function adjustCodePosition() {
-	$('#code').css("margin-top", ($("#garden").height() - $("#code").height()-$("#slide").height()) / 3);
-}
-
-
-function adjustLoveHeartPosition() {
-	$('#loveHeart').css("margin-top", ($("#leftSide").height()-$("#garden").height()) / 2);
-}
-
-function adjustLeftSidePosition() {
-	$('#leftSide').css("margin-top", ($("#garden").height() - $("#leftSide").height()) / 2);
-}
-
 function showLoveU() {
 	$('#loveu').fadeIn(3000);
+}
+
+function showSlide() {
+	$('#slide').fadeIn(3000);
+}
+
+function typeSound() {
+    // Audio Loop Limit
+    var loopLimit = 48;
+    var loopCounter = 0;
+    document.getElementById('type').play();
+    document.getElementById('type').addEventListener('ended', function(){
+        if (loopCounter < loopLimit){
+            this.currentTime = 0;
+            this.play();
+            loopCounter++;
+        }
+    }, false);
 }

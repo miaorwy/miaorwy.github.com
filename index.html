@@ -11,7 +11,7 @@
 }
 @font-face {
     font-family: love;
-    src: url(font/love.ttf);
+    src: url(fonts/love.ttf);
 }
 </style>
 
@@ -32,7 +32,8 @@
 </head>
 
 <body>
-<audio src="music/kiss.mp3" id="audio1" hidden="true" autoplay="true" loop="true"> </audio>
+<audio src="music/kiss.mp3" id="bgm" hidden="true" autoplay="true" loop="true"> </audio>
+<audio source src="music/type.mp3" id="type" hidden="true"> </audio>
 <div style="text-align:center;clear:both;">
 <script src="/gg_bd_ad_720x90.js" type="text/javascript"></script>
 <script src="/follow.js" type="text/javascript"></script>
@@ -42,47 +43,51 @@
 	<div id="content">
 		<div id="leftSide">
 			<div id="code">
-				<span class="comments">/**</span><br />
-				<span class="space"/><span class="comments">*2013—02-14,</span><br />
-				<span class="space"/><span class="comments">*2013-02-28.</span><br />
-				<span class="space"/><span class="comments">*/</span><br />
-				Boy name = <span class="keyword">Mr</span> REN<br />
-				Girl name = <span class="keyword">Mrs</span> JIANG<br />
-				<span class="comments">// Fall in love river. </span><br />
-				The boy love the girl;<br />
-				<span class="comments">// They love each other.</span><br />
-				The girl loved the boy;<br />
-				<span class="comments">// AS time goes on.</span><br />
-				The boy can not be separated the girl;<br />
-				<span class="comments">// At the same time.</span><br />
-				The girl can not be separated the boy;<br />
-				<span class="comments">// Both wind and snow all over the sky.</span><br />
-				<span class="comments">// Whether on foot or 5 kilometers.</span><br />
-				<span class="keyword">The boy</span> very <span class="keyword">happy</span>;<br />
-				<span class="keyword">The girl</span> is also very <span class="keyword">happy</span>;<br />
-				<span class="placeholder"/><span class="comments">// Whether it is right now</span><br />
-				<span class="placeholder"/><span class="comments">// Still in the distant future.</span><br />
-				<span class="placeholder"/>The boy has but one dream;<br />
-				<span class="comments">// The boy wants the girl could well have been happy.</span><br />
-				<br>
-				<br>
-				I want to say:<br />
-				Baby, I love you forever;<br />
-			</div>
-			<div id="slide">
-				<div class="flexslider">
-	  				<ul class="slides">
-	    				<li>
-	      					<img src="image/1.jpg" />
-	    				</li>
-	    				<li>
-	      					<img src="image/2.jpg" />
-	    				</li>
-	    				<li>
-	      					<img src="image/3.jpg" />
-	    				</li>
-	  				</ul>
-				</div>
+				<span class="comments">// This is a true love story.</span><br />
+				<span class="keyword">public void</span> loveStory(List<span class="proto">&lt;String&gt;</span> girls) {<br />
+				<span class="placeholder"/><span class="comments">// Once there was a boy named Vincent.</span><br />
+				<span class="placeholder"/><span class="proto">String</span> theBoy = <span class="string">"Vincent"</span>;<br />
+				<span class="placeholder"/><span class="comments">// He had no girlfriend and he was not happy.</span><br />
+				<span class="placeholder"/><span class="proto">String</span> theGirl = <span class="keyword">null</span>;<br />
+				<span class="placeholder"/><span class="proto">String</span> status = <span class="string">"single"</span>;<br />
+				<span class="placeholder"/><span class="keyword">boolean</span> happy = <span class="keyword">false</span>;<br />
+				<span class="placeholder"/>List<span class="proto">&lt;String&gt;</span> family;<br />
+				<br />
+				<span class="placeholder"/><span class="comments">// The boy has met many girls.</span><br />
+				<span class="placeholder"/><span class="keyword">for</span>(<span class="proto">String</span> aGirl: girls) {<br />
+				<span class="placeholder"/><span class="placeholder"/><span class="comments">// Until he met with a girl named Helen.</span><br />
+				<span class="placeholder"/><span class="placeholder"/><span class="keyword">if</span>(aGirl.equals(<span class="string">"Helen"</span>)) {<br />
+				<span class="placeholder"/><span class="placeholder"/><span class="placeholder"/><span class="comments">// He knew she is the girl in his life.</span><br />
+				<span class="placeholder"/><span class="placeholder"/><span class="placeholder"/>theGirl = aGirl;<br />
+				<span class="placeholder"/><span class="placeholder"/><span class="placeholder"/><span class="comments">// He couldn't help falling in love with her.</span><br />
+				<span class="placeholder"/><span class="placeholder"/><span class="placeholder"/>status = <span class="string">"in love"</span>;<br />
+				<span class="placeholder"/><span class="placeholder"/><span class="placeholder"/><span class="comments">// And he has been happy ever since.</span><br />
+				<span class="placeholder"/><span class="placeholder"/><span class="placeholder"/>happy = <span class="keyword">true</span>;<br />
+				<span class="placeholder"/><span class="placeholder"/><span class="placeholder"/><span class="keyword">break</span>;<br />
+				<span class="placeholder"/><span class="placeholder"/>}<br />
+				<span class="placeholder"/>}<br />
+				<br />
+				<span class="placeholder"/><span class="comments">// This is how the love story about the boy and the girl begins.</span><br />
+				<span class="placeholder"/><span class="comments">// But this is not the end of the story.</span><br />
+				<span class="placeholder"/><span class="comments">// The boy and the girl will live together happily since then.</span><br />
+				<span class="placeholder"/><span class="keyword">for</span>(<span class="keyword">int</span> yearTogether = 0; yearTogether <= <span class="proto">Integer</span>.MAX_VALUE; yearTogether++) {<br />
+				<span class="placeholder"/><span class="placeholder"/><span class="comments">// After two years together, they will be married.</span><br />
+				<span class="placeholder"/><span class="placeholder"/><span class="keyword">if</span>(yearTogether == 2) {<br />
+				<span class="placeholder"/><span class="placeholder"/><span class="placeholder"/>status = <span class="string">"married"</span>;<br />
+				<span class="placeholder"/><span class="placeholder"/><span class="placeholder"/><span class="comments">// They will form a new family together.</span><br />
+				<span class="placeholder"/><span class="placeholder"/><span class="placeholder"/>family = <span class="keyword">new</span> ArrayList<span class="proto">&lt;String&gt;</span>();<br />
+				<span class="placeholder"/><span class="placeholder"/><span class="placeholder"/>family.add(theBoy)</span>;<br />
+				<span class="placeholder"/><span class="placeholder"/><span class="placeholder"/>family.add(theGirl)</span>;<br />
+				<span class="placeholder"/><span class="placeholder"/>}<br />
+				<span class="placeholder"/><span class="placeholder"/><span class="comments">// After four years together, their family will have a new member.</span><br />
+				<span class="placeholder"/><span class="placeholder"/><span class="keyword">if</span>(yearTogether == 4) {<br />
+				<span class="placeholder"/><span class="placeholder"/><span class="placeholder"/>family.add(<span class="string">"baby"</span>)</span>;<br />
+				<span class="placeholder"/><span class="placeholder"/>}<br />
+				<span class="placeholder"/><span class="placeholder"/><span class="comments">// Nothing but the end of the world can set them apart.</span><br />
+				<span class="placeholder"/>}<br />
+				<br />
+				<span class="placeholder"/><span class="proto">System</span>.out.println(<span class="string">"Baby, together let's make the the story come true."</span>);<br />
+				}
 			</div>
 		</div>
 		<div id="loveHeart">
@@ -98,7 +103,102 @@
 				</div>
 			</div>
 		</div>
-		
+		<div id="slide">
+			<div class="flexslider">
+  				<ul class="slides">
+    				<li>
+      					<img src="images/1.jpg" />
+    				</li>
+    				<li>
+      					<img src="images/2.jpg" />
+    				</li>
+    				<li>
+      					<img src="images/3.jpg" />
+    				</li>
+    				<li>
+      					<img src="images/4.jpg" />
+    				</li>
+    				<li>
+      					<img src="images/5.jpg" />
+    				</li>
+    				<li>
+      					<img src="images/6.jpg" />
+    				</li>
+    				<li>
+      					<img src="images/7.jpg" />
+    				</li>
+    				<li>
+      					<img src="images/8.jpg" />
+    				</li>
+    				<li>
+      					<img src="images/9.jpg" />
+    				</li>
+    				<li>
+      					<img src="images/10.jpg" />
+    				</li>
+    				<li>
+      					<img src="images/11.jpg" />
+    				</li>
+    				<li>
+      					<img src="images/12.jpg" />
+    				</li>
+    				<li>
+      					<img src="images/13.jpg" />
+    				</li>
+    				<li>
+      					<img src="images/14.jpg" />
+    				</li>
+    				<li>
+      					<img src="images/15.jpg" />
+    				</li>
+    				<li>
+      					<img src="images/16.jpg" />
+    				</li>
+    				<li>
+      					<img src="images/17.jpg" />
+    				</li>
+    				<li>
+      					<img src="images/18.jpg" />
+    				</li>
+    				<li>
+      					<img src="images/19.jpg" />
+    				</li>
+    				<li>
+      					<img src="images/20.jpg" />
+    				</li>
+    				<li>
+      					<img src="images/21.jpg" />
+    				</li>
+    				<li>
+      					<img src="images/22.jpg" />
+    				</li>
+    				<li>
+      					<img src="images/23.jpg" />
+    				</li>
+    				<li>
+      					<img src="images/24.jpg" />
+    				</li>
+    				<li>
+      					<img src="images/25.jpg" />
+    				</li>
+    				<li>
+      					<img src="images/26.jpg" />
+    				</li>
+    				<li>
+      					<img src="images/27.jpg" />
+    				</li>
+    				<li>
+      					<img src="images/28.jpg" />
+    				</li>
+    				<li>
+      					<img src="images/29.jpg" />
+    				</li>
+    				<li>
+      					<img src="images/30.jpg" />
+    				</li>
+  				</ul>
+			</div>
+		</div>
 	</div>
 </div>
 
@@ -125,10 +225,9 @@ if (!document.createElement('canvas').getContext) {
 	$("#copyright").css("bottom", "10px");
 	document.execCommand("stop");
 } else {
-	adjustLoveHeartPosition();
 	setTimeout(function () {
 		startHeartAnimation();
-	}, 5000);
+	}, 63000);
 
 	timeElapse(together);
 	setInterval(function () {
@@ -138,6 +237,13 @@ if (!document.createElement('canvas').getContext) {
 	
 	$("#code").typewriter();
 	
+	setTimeout(function () {
+		showSlide();
+	}, 130000);
+	
+	setTimeout(function () {
+		typeSound();
+	}, 300);
 	
 }
 </script>

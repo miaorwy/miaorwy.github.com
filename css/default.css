@@ -10,12 +10,13 @@ body{margin:0;padding:0;background:#fee;font-size:12px;overflow:auto}
 #loveu .signature{margin-top:10px;margin-right:130px;font-size:22px;font-style:italic}
 #clickSound{display:none}
 #leftSide{float:left;width:440px}
-#code{float:left;width:440px;height:400px;color:#333;font-family:"Consolas","Monaco","Bitstream Vera Sans Mono","Courier New","sans-serif";font-size:12px}
+#code{float:left;width:540px;height:650px;color:#333;font-family:"Consolas","Monaco","Bitstream Vera Sans Mono","Courier New","sans-serif";font-size:12px}
 #code .string{color:#2a36ff}
 #code .keyword{color:#7f0055;font-weight:bold}
 #code .placeholder{margin-left:15px}#code .space{margin-left:7px}
 #code .comments{color:#3f7f5f}
-#slide{float:left;width:400px;height:300px}
+#code .proto{color:#7f5f3f}
+#slide{float:left;width:1110px;;margin-top:50px;display:none}
 #copyright{margin-top:10px;text-align:center;width:100%;color:#666}
 #errorMsg{width:100%;text-align:center;font-size:24px;position:absolute;top:100px;left:0}
 #copyright a{color:#666}

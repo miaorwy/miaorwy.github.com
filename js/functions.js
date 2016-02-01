@@ -79,11 +79,22 @@ function startHeartAnimation() {
 				var current = str.substr(progress, 1);
 				if (current == '<') {
 					progress = str.indexOf('>', progress) + 1;
+				} else if (current == '&') {
+				    progress = str.indexOf(';', progress) + 1;
 				} else {
+				    if(current == '!') {
+				        setTimeout(function () {
+		                    stopType();
+	                    }, 1000);
+				    }
 					progress++;
 				}
 				$ele.html(str.substring(0, progress) + (progress & 1 ? '_' : ''));
+				if (progress == str.length/2) {
+				    startHeartAnimation();
+				}
 				if (progress >= str.length) {
+				    showSlide();
 					clearInterval(timer);
 				}
 			}, 75);
@@ -135,16 +146,78 @@ function showSlide() {
 	$('#slide').fadeIn(3000);
 }
 
+function stopType() {
+    document.getElementById('type').pause();
+}
+
 function typeSound() {
-    // Audio Loop Limit
-    var loopLimit = 48;
-    var loopCounter = 0;
-    document.getElementById('type').play();
-    document.getElementById('type').addEventListener('ended', function(){
-        if (loopCounter < loopLimit){
-            this.currentTime = 0;
-            this.play();
-            loopCounter++;
-        }
+    var sound = document.getElementById('type');
+    sound.volume = 0.5;
+    sound.play();
+    sound.addEventListener('ended', function(){
+        this.currentTime = 0;
+        this.play();
     }, false);
+}
+
+function mouseFollow() {
+    yourLogo='源码素材网';
+    logoFont='Arial';
+    logoSize=9;
+    logoColor='red';
+    logoWidth=40;
+    logoHeight=40;
+    logoSpeed=0.03;
+    yourLogo=yourLogo.split('');
+    L=yourLogo.length; 
+    Result="<font face="+logoFont+" style='font-size:"+logoSize+"pt' color="+logoColor+">";
+    TrigSplit=360/L;
+    br=(document.layers)?1:0;
+    if (br){
+    for (i=0; i < L; i++)
+    document.write('<layer name="ns'+i+'" top=0 left=0 width=14 height=14">'+Result+yourLogo[i]+'</font></layer>');
+    }
+    else{
+    document.write('<div id="outer" style="position:absolute;top:0px;left:0px"><div style="position:relative">');
+    for (i=0; i < L; i++)
+    document.write('<div id="ie" style="position:absolute;top:0px;left:0px;width:14px;height:14px">'+Result+yourLogo[i]+'</font></div>');
+    document.write('</div></div>');
+    }
+    ypos=0;
+    xpos=0;
+    step=logoSpeed;
+    currStep=0;
+    Y=new Array();
+    X=new Array();
+    Yn=new Array();
+    Xn=new Array();
+    for (i=0; i < L; i++) 
+     {
+     Yn[i]=0;
+     Xn[i]=0;
+     }
+    (document.layers)?$window.captureEvents(Event.MOUSEMOVE):0;
+    function Mouse(evnt){
+     ypos = (document.layers)?evnt.pageY:event.y;
+     xpos = (document.layers)?evnt.pageX:event.x;
+    }
+    (document.layers)?$window.onMouseMove=Mouse:document.onmousemove=Mouse;
+    function animateLogo(){
+    if (!br)outer.style.pixelTop=document.body.scrollTop; 
+    for (i=0; i < L; i++){
+    var layer=(document.layers)?document.layers['ns'+i]:ie[i].style;
+    layer.top =Y[i]+logoHeight*Math.sin(currStep+i*TrigSplit*Math.PI/180);
+    layer.left=X[i]+logoWidth*Math.cos(currStep+i*TrigSplit*Math.PI/180);
+    }
+    currStep-=step;
+    }
+    function Delay(){
+    for (i=L; i >= 0; i--)
+    {
+    Y[i]=Yn[i]+=(ypos-Yn[i])*(0.1+i/L);           
+    X[i]=Xn[i]+=(xpos-Xn[i])*(0.1+i/L);        
+    }
+    animateLogo();
+    setTimeout('Delay()',20);
+    }
 }

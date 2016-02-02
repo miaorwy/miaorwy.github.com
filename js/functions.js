@@ -169,8 +169,6 @@ curKisser = 0; //the last image DIV to be displayed (used for timer)
 kissDelay = 1500; //duration images stay on screen (in milliseconds)
 kissSpacer =100; //distance to move mouse b4 next heart appears
 theimage = "icon/heart.png"; //the 1st image to be displayed
-theimage2 = "icon/heart.png"; //the 2nd image to be displayed
-
 
 // Browser checking and syntax variables
 var docLayers = (document.layers) ? true:false;

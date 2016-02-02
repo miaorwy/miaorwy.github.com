@@ -1,4 +1,15 @@
 body{margin:0;padding:0;background:#fee;font-size:12px;overflow:auto}
+.kisser {
+
+  position:absolute;
+  z-index: 1000;
+  top:0;
+
+  left:0;
+
+  visibility:hidden;
+
+}
 #mainDiv{width:100%;height:100%}
 #loveHeart{float:left;width:670px;height:625px}
 #garden{width:100%;height:100%}
@@ -17,6 +28,10 @@ body{margin:0;padding:0;background:#fee;font-size:12px;overflow:auto}
 #code .comments{color:#3f7f5f}
 #code .proto{color:#7f5f3f}
 #slide{float:left;width:1130px;;margin-top:50px;display:none}
+#outerCircleText {font-style:italic;font-weight:bold;font-family:'comic sans ms',verdana,arial;color: #000;position:absolute;top:0;left:0;z-index:3000;cursor:default;}
+#outerCircleText div {position:relative;}
+#outerCircleText div div {position:absolute;top:0;left:0;text-align:center;}
+
 #copyright{margin-top:10px;text-align:center;width:100%;color:#666}
 #errorMsg{width:100%;text-align:center;font-size:24px;position:absolute;top:100px;left:0}
 #copyright a{color:#666}

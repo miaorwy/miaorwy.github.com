@@ -162,64 +162,90 @@ function typeSound() {
     }, false);
 }
 
-function mouseFollow() {
-    yourLogo='源码素材网';
-    logoFont='Arial';
-    logoSize=9;
-    logoColor='red';
-    logoWidth=40;
-    logoHeight=40;
-    logoSpeed=0.03;
-    yourLogo=yourLogo.split('');
-    L=yourLogo.length; 
-    Result="<font face="+logoFont+" style='font-size:"+logoSize+"pt' color="+logoColor+">";
-    TrigSplit=360/L;
-    br=(document.layers)?1:0;
-    if (br){
-    for (i=0; i < L; i++)
-    document.write('<layer name="ns'+i+'" top=0 left=0 width=14 height=14">'+Result+yourLogo[i]+'</font></layer>');
-    }
-    else{
-    document.write('<div id="outer" style="position:absolute;top:0px;left:0px"><div style="position:relative">');
-    for (i=0; i < L; i++)
-    document.write('<div id="ie" style="position:absolute;top:0px;left:0px;width:14px;height:14px">'+Result+yourLogo[i]+'</font></div>');
-    document.write('</div></div>');
-    }
-    ypos=0;
-    xpos=0;
-    step=logoSpeed;
-    currStep=0;
-    Y=new Array();
-    X=new Array();
-    Yn=new Array();
-    Xn=new Array();
-    for (i=0; i < L; i++) 
-     {
-     Yn[i]=0;
-     Xn[i]=0;
-     }
-    (document.layers)?$window.captureEvents(Event.MOUSEMOVE):0;
-    function Mouse(evnt){
-     ypos = (document.layers)?evnt.pageY:event.y;
-     xpos = (document.layers)?evnt.pageX:event.x;
-    }
-    (document.layers)?$window.onMouseMove=Mouse:document.onmousemove=Mouse;
-    function animateLogo(){
-    if (!br)outer.style.pixelTop=document.body.scrollTop; 
-    for (i=0; i < L; i++){
-    var layer=(document.layers)?document.layers['ns'+i]:ie[i].style;
-    layer.top =Y[i]+logoHeight*Math.sin(currStep+i*TrigSplit*Math.PI/180);
-    layer.left=X[i]+logoWidth*Math.cos(currStep+i*TrigSplit*Math.PI/180);
-    }
-    currStep-=step;
-    }
-    function Delay(){
-    for (i=L; i >= 0; i--)
-    {
-    Y[i]=Yn[i]+=(ypos-Yn[i])*(0.1+i/L);           
-    X[i]=Xn[i]+=(xpos-Xn[i])*(0.1+i/L);        
-    }
-    animateLogo();
-    setTimeout('Delay()',20);
+// Mouse follow effect
+
+kisserCount = 10; //maximum number of images on screen at one time
+curKisser = 0; //the last image DIV to be displayed (used for timer)
+kissDelay = 1500; //duration images stay on screen (in milliseconds)
+kissSpacer =100; //distance to move mouse b4 next heart appears
+theimage = "icon/heart.png"; //the 1st image to be displayed
+theimage2 = "icon/heart.png"; //the 2nd image to be displayed
+
+
+// Browser checking and syntax variables
+var docLayers = (document.layers) ? true:false;
+var docId = (document.getElementById) ? true:false;
+var docAll = (document.all) ? true:false;
+var docbitK = (docLayers) ? "document.layers['":(docId) ? "document.getElementById('":(docAll) ? "document.all['":"document.";
+var docbitendK = (docLayers) ? "']":(docId) ? "')":(docAll) ? "']":"";
+var stylebitK = (docLayers) ? "":".style";
+var showbitK = (docLayers) ? "show":"visible";
+var hidebitK = (docLayers) ? "hide":"hidden";
+var ns6=document.getElementById&&!document.all;
+
+// Variables used in script
+var posX, posY, lastX, lastY, kisserCount, curKisser, kissDelay, kissSpacer, theimage;
+lastX = 0;
+lastY = 0;
+
+//Collection of functions to get mouse position and place the images
+function doKisser(e) {
+    posX = getMouseXPos(e);
+    posY = getMouseYPos(e);
+    if (posX>(lastX+kissSpacer)||posX<(lastX-kissSpacer)||posY>(lastY+kissSpacer)||posY<(lastY-kissSpacer)) {
+        showKisser(posX,posY);
+        lastX = posX;
+        lastY = posY;
     }
 }
+
+// Get the horizontal position of the mouse
+function getMouseXPos(e) {
+    if (document.layers||ns6) {
+        return parseInt(e.pageX+10);
+    } else {
+        return (parseInt(event.clientX+10) + parseInt(document.body.scrollLeft));
+    }
+}
+
+// Get the vartical position of the mouse
+function getMouseYPos(e) {
+    if (document.layers||ns6) {
+        return parseInt(e.pageY);
+    } else {
+        return (parseInt(event.clientY) + parseInt(document.body.scrollTop));
+    }
+}
+
+//Place the image and start timer so that it disappears after a period of time
+function showKisser(x,y) {
+    var processedx=ns6? Math.min(x,window.innerWidth-75) : docAll? Math.min(x,document.body.clientWidth-55) : x;
+    if (curKisser >= kisserCount) {
+        curKisser = 0;
+    }
+    eval(docbitK + "kisser" + curKisser + docbitendK + stylebitK).left =  processedx + 'px';
+    eval(docbitK + "kisser" + curKisser + docbitendK + stylebitK).top = y + 'px';
+    eval(docbitK + "kisser" + curKisser + docbitendK + stylebitK + ".visibility = '" + showbitK + "'");
+    if (eval("typeof(kissDelay" + curKisser + ")")=="number") {
+        eval("clearTimeout(kissDelay" + curKisser + ")");
+    }
+    eval("kissDelay" + curKisser + " = setTimeout('hideKisser(" + curKisser + ")',kissDelay)");
+    curKisser += 1;
+}
+
+//Make the image disappear
+function hideKisser(knum) {
+  eval(docbitK + "kisser" + knum + docbitendK + stylebitK + ".visibility = '" + hidebitK + "'");
+}
+
+function kissbegin(){
+    //Let the browser know when the mouse moves
+    if (docLayers) {
+        document.captureEvents(Event.MOUSEMOVE);
+        document.onMouseMove = doKisser;
+    } else {
+        document.onmousemove = doKisser;
+    }
+}
+
+window.onload=kissbegin;

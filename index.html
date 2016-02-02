@@ -13,6 +13,11 @@
     font-family: love;
     src: url(fonts/love.ttf);
 }
+
+BODY{
+	cursor:url("icon/heart.png"), default;
+}
+
 </style>
 
 <link href="css/default.css" type="text/css" rel="stylesheet">
@@ -28,7 +33,6 @@
     $('.flexslider').flexslider();
   });
 </script>
-
 </head>
 
 <body>
@@ -237,6 +241,16 @@ if (!document.createElement('canvas').getContext) {
 		typeSound();
 	}, 300);
 }
+</script>
+
+<script type="text/JavaScript">
+// Add all DIV's of hearts
+if (document.all||document.getElementById||document.layers){
+	for (k=0;k<kisserCount;k=k+1) {
+		document.write('<div id="kisser' + k + '" class="kisser"><img src="' + theimage + '" alt="" border="0"></div>\n');
+	}
+}
+
 </script>
 </body>
 </html>
